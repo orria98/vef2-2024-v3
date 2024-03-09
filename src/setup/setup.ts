@@ -13,9 +13,9 @@ dotenv.config();
 //const SCHEMA_FILE = '/Users/orri/Desktop/Desktop - Orri’s MacBook Pro/Skóli/4_onn/Vefforritun II/Verkefni 3 v2/vef2-2024-v3/src/sql/schema.sql';
 //const DROP_SCHEMA_FILE = '/Users/orri/Desktop/Desktop - Orri’s MacBook Pro/Skóli/4_onn/Vefforritun II/Verkefni 3 v2/vef2-2024-v3/src/sql/drop.sql';
 //const INPUT_DIR = '/Users/orri/Desktop/Desktop - Orri’s MacBook Pro/Skóli/4_onn/Vefforritun II/Verkefni 3 v2/vef2-2024-v3/data';
-const SCHEMA_FILE = '../sql/schema.sql';
-const DROP_SCHEMA_FILE = '../sql/drop.sql';
-const INPUT_DIR = '../../data';
+const SCHEMA_FILE = './sql/schema.sql';
+const DROP_SCHEMA_FILE = './sql/drop.sql';
+const INPUT_DIR = './data';
 async function setupData(logger: Logger){
     const dropScript = await readFile(DROP_SCHEMA_FILE);
     const createScript = await readFile(SCHEMA_FILE);
