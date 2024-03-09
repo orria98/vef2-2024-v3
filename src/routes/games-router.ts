@@ -8,8 +8,10 @@ export async function returnGame(
     next: NextFunction
 ) {
     const games = await getGames();
-    res.status(200).json({ games: [] });
-    next();
+    if(!games){
+        return next(new Error('Unable to get games'));
+    }
+    return res.status(200).json({ games: [] });
 }
 
 export async function getGameHomeAwayDate(
@@ -23,8 +25,11 @@ export async function getGameHomeAwayDate(
         homeScore: 0,
         awayScore: 0
     });
-    res.status(200).json({ game });
-    next();
+    if(!game){
+        return next(new Error('Unable to get game'));
+    }
+
+    return res.status(200).json({ game });
 }
 
 export async function deleteGames(
@@ -38,8 +43,11 @@ export async function deleteGames(
         homeScore: 0,
         awayScore: 0
     });
-    res.status(200).json({ deleted });
-    next();
+    if(!deleted){
+        return next(new Error('Unable to delete game'));
+    }
+
+    return res.status(200).json({ deleted });    
 }
 
 export async function patchGame(
@@ -51,8 +59,10 @@ export async function patchGame(
     const game = await updateGame({
         home, away, date, homeScore, awayScore
     });
-    res.status(200).json({ game });
-    next();
+    if(!game){
+        return next(new Error('Unable to update game'));
+    }
+    return res.status(200).json({ game });    
 }
 
 export async function postGame(
@@ -64,6 +74,8 @@ export async function postGame(
     const game = await insertGame({
         home, away, date, homeScore, awayScore
     });
-    res.status(201).json({ game });
-    next();
+    if(!game){
+        return next(new Error('Unable to insert game'));
+    }
+    return res.status(201).json({ game });    
 }

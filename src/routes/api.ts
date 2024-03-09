@@ -25,6 +25,8 @@ export async function error() {
   throw new Error('error');
 }
 
+
+//Komst aldrei inn í /teams eða /games það loadaði bara endalaust og ég fann ekki út úr því :(
 router.get('/', catchErrors(index));
 
 router.get('/teams', getTeam);
@@ -33,7 +35,7 @@ router.delete('/teams/:slug', deleteTeamSlug);
 router.post('/teams', postTeam);
 router.patch('/teams', patchTeam);
 
-router.get('/games', catchErrors(returnGame));
-router.delete('/games', catchErrors(deleteGames));
-router.patch('/games', catchErrors(patchGame));
-router.post('/games', catchErrors(postGame));
+router.get('/games', returnGame);
+router.delete('/games', deleteGames);
+router.patch('/games', patchGame);
+router.post('/games', postGame);

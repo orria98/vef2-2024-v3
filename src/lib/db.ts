@@ -9,6 +9,7 @@ const env = process.env.NODE_ENV ?? 'development';
 
 let savedPool = new pg.Pool;
 
+
 export function getPool() {
     if(savedPool){
         return savedPool;
@@ -94,6 +95,7 @@ export async function insertTeam(team: Team): Promise<Team | null> {
 
     return mapped;
 }
+
 
 export async function conditionalUpdate(
         table: 'games' | 'teams',
@@ -184,4 +186,3 @@ export async function updateGame(game: Game): Promise<Game | null> {
 
     return mapped;
 }
-

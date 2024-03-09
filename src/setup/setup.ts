@@ -1,3 +1,4 @@
+
 import dotenv from 'dotenv';
 import { insertTeam, getTeamId, insertGame, query, poolEnd } from '../lib/db.js';
 import { parseTeamsJson, parseGamedayFile } from './parse.js';
@@ -10,12 +11,22 @@ import slugify from 'slugify';
 
 dotenv.config();
 
+//endalaust vesen með paths...
 //const SCHEMA_FILE = '/Users/orri/Desktop/Desktop - Orri’s MacBook Pro/Skóli/4_onn/Vefforritun II/Verkefni 3 v2/vef2-2024-v3/src/sql/schema.sql';
 //const DROP_SCHEMA_FILE = '/Users/orri/Desktop/Desktop - Orri’s MacBook Pro/Skóli/4_onn/Vefforritun II/Verkefni 3 v2/vef2-2024-v3/src/sql/drop.sql';
 //const INPUT_DIR = '/Users/orri/Desktop/Desktop - Orri’s MacBook Pro/Skóli/4_onn/Vefforritun II/Verkefni 3 v2/vef2-2024-v3/data';
-const SCHEMA_FILE = './sql/schema.sql';
-const DROP_SCHEMA_FILE = './sql/drop.sql';
+
+//Þessi paths virka ekki í Render, fæ alltaf villu um að skráin sé ekki til. Virkaði í vscode þegar ég notaði full path.
+
+const SCHEMA_FILE = '../sql/schema.sql';
+const DROP_SCHEMA_FILE = '../sql/drop.sql';
 const INPUT_DIR = './data';
+
+/**
+ * Sets up the data by dropping and creating the database schema,
+ * parsing teams and gameday files, and inserting teams and games into the database.
+ * @param logger - The logger instance for logging messages.
+ */
 async function setupData(logger: Logger){
     const dropScript = await readFile(DROP_SCHEMA_FILE);
     const createScript = await readFile(SCHEMA_FILE);
