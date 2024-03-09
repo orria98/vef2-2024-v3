@@ -8,6 +8,12 @@ import { Request, Response, NextFunction } from 'express';
 export function catchErrors(
   fn: (req: Request, res: Response, next: NextFunction) => Promise<void>,
 ): (req: Request, res: Response, next: NextFunction) => Promise<void> {
-  return (req: Request, res: Response, next: NextFunction) =>
-    fn(req, res, next).catch(next);
+  return (req: Request, res: Response, next: NextFunction) => {
+    console.log('Request:', req);
+    console.log('Response:', res);
+    return fn(req, res, next).catch((error) => {
+      console.error('Error:', error);
+      next(error);
+    });
+  };
 }
