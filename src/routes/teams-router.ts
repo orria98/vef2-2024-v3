@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { getTeams, getTeamBySlug, deleteTeamBySlug, insertTeam, conditionalUpdate } from '/Users/orri/Desktop/Desktop - Orri’s MacBook Pro/Skóli/4_onn/Vefforritun II/Verkefni 3 v2/vef2-2024-v3/src/lib/db.js';
-import { teamMapper } from '/Users/orri/Desktop/Desktop - Orri’s MacBook Pro/Skóli/4_onn/Vefforritun II/Verkefni 3 v2/vef2-2024-v3/src/lib/mappers.js'
+import { getTeams, getTeamBySlug, deleteTeamBySlug, insertTeam, conditionalUpdate } from '../lib/db.js';
+import { teamMapper } from '../lib/mappers.js'
 import slugify from 'slugify';
 import { getTeamId } from '../lib/db.js';
 

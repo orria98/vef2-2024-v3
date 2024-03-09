@@ -1,6 +1,6 @@
 import pg from 'pg';
 import { Team, Game } from '../types';
-import { teamMapper, teamsMapper, gameMapper, gamesMapper } from '/Users/orri/Desktop/Desktop - Orri’s MacBook Pro/Skóli/4_onn/Vefforritun II/Verkefni 3 v2/vef2-2024-v3/src/lib/mappers.js';
+import { teamMapper, teamsMapper, gameMapper, gamesMapper } from './mappers.js';
 import slugify from 'slugify';
 
 
